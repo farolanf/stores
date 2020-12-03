@@ -1,8 +1,5 @@
 defmodule StoresWeb.Helpers do
-
   import Phoenix.LiveView
-  import Phoenix.HTML.Tag
-
   alias Stores.Accounts
 
   def assign_defaults(session, socket) do
@@ -14,5 +11,4 @@ defmodule StoresWeb.Helpers do
       _ -> socket
     end
   end
-
 end
