@@ -18,6 +18,12 @@ config :stores, StoresWeb.Endpoint,
   pubsub_server: Stores.PubSub,
   live_view: [signing_salt: "NspUtUOq"]
 
+config :stores, Stores.Mailer,
+  adapter: Bamboo.SMTPAdapter,
+  server: "docker.lo",
+  hostname: "stores.id",
+  port: 1025
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

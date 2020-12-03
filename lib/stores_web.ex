@@ -87,6 +87,8 @@ defmodule StoresWeb do
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
 
+      import Can
+      import StoresWeb.Helpers
       import StoresWeb.ErrorHelpers
       import StoresWeb.Gettext
       alias StoresWeb.Router.Helpers, as: Routes

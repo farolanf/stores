@@ -1,0 +1,58 @@
+<div class="tabs">
+  <ul x-data="{activeTab: '<%= @active_tab %>'}">
+    <li :class="{'is-active': activeTab === 'tab1'}"
+    phx-click="select_tab"
+    phx-value-tab="tab1"
+    phx-target="<%= @myself %>">
+      <a>Tab 1</a>
+    </li>
+
+    <li :class="{'is-active': activeTab === 'tab2'}"
+    phx-click="select_tab"
+    phx-value-tab="tab2"
+    phx-target="<%= @myself %>">
+      <a>Tab 2</a>
+    </li>
+
+    <li :class="{'is-active': activeTab === 'tab3'}"
+    phx-click="select_tab"
+    phx-value-tab="tab3"
+    phx-target="<%= @myself %>">
+      <a>Tab 3</a>
+    </li>
+  </ul>
+</div>
+
+<div class="block"
+x-data="{name: 'nana'}"
+@set-name="name = $event.detail">
+
+  <div>name is <span x-text="name" phx-update="ignore"></span></div>
+
+  <%= if @active_tab == "tab1" do %>
+    <div class="dropdown"
+    x-data="{open: false}"
+    :class="{'is-active': open}"
+    @click.away="open = false">
+
+      <div class="dropdown-trigger">
+        <button class="button" @click="open = !open">Dropdown</button>
+      </div>
+
+      <div class="dropdown-menu">
+        <div class="dropdown-content">
+          <a href="#" class="dropdown-item" @click="$dispatch('set-name', 'budi'); open = false">item 1</a>
+          <a href="#" class="dropdown-item" @click="$dispatch('set-name', 'bambang'); open = false">item 2</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <%= if @active_tab == "tab2" do %>
+    tab 2
+  <% end %>
+
+  <%= if @active_tab == "tab3" do %>
+    tab 3
+  <% end %>
+</div>

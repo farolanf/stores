@@ -1,0 +1,79 @@
+<%= if @live_action == :login do %>
+  <div class="modal is-active">
+    <%= live_redirect "", to: Routes.page_path(@socket, :index), class: "modal-background" %>
+    <%= f = form_for :login, "/session/new", phx_change: :validate, phx_target: @myself %>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Login</p>
+        </header>
+        <div class="modal-card-body">
+          <%= if live_flash(@flash, :error) do %>
+            <div class="notification is-danger"><%= live_flash(@flash, :error) %></div>
+          <% end %>
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <%= email_input f, :email, class: "input", placeholder: "Email", autocomplete: "email", value: @login["email"], phx_debounce: 300, phx_hook: "autofocus" %>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <%= password_input f, :password, class: "input", placeholder: "Password", value: @login["password"], phx_debounce: 300 %>
+            </div>
+          </div>
+        </div>
+        <div class="modal-card-foot">
+          <button class="button is-primary" <%= if !assigns[:valid], do: "disabled" %>>Login</button>
+          <%= live_redirect "Register", to: Routes.page_path(@socket, :register), class: "button" %>
+        </div>
+      </div>
+    </form>
+  </div>
+<% end %>
+
+<%= if @live_action == :register do %>
+  <div class="modal is-active">
+    <%= live_redirect "", to: Routes.page_path(@socket, :index), class: "modal-background" %>
+    <%= f = form_for :register, "#", phx_submit: :register, phx_change: :validate, phx_target: @myself %>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Register</p>
+        </header>
+        <div class="modal-card-body">
+          <%= if live_flash(@flash, :error) do %>
+            <div class="notification is-danger"><%= live_flash(@flash, :error) %></div>
+          <% end %>
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <%= email_input f, :email, class: "input", placeholder: "Email", value: @register["email"], phx_debounce: 300, phx_hook: "autofocus" %>
+            </div>
+            <%= if live_flash(@flash, :email) do %>
+              <div class="help is-danger"><%= live_flash(@flash, :email) %></div>
+            <% end %>
+          </div>
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <%= password_input f, :password, class: "input", placeholder: "Password", value: @register["password"], phx_debounce: 300 %>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Password confirmation</label>
+            <div class="control">
+              <%= password_input f, :password_confirmation, class: "input", placeholder: "Repeat password", value: @register["password_confirmation"], phx_debounce: 300 %>
+            </div>
+            <%= if live_flash(@flash, :password) do %>
+              <div class="help is-danger"><%= live_flash(@flash, :password) %></div>
+            <% end %>
+          </div>
+        </div>
+        <div class="modal-card-foot">
+          <button class="button is-primary" <%= if !assigns[:valid], do: "disabled" %>>Register</button>
+          <%= live_redirect "Login", to: Routes.page_path(@socket, :login), class: "button" %>
+        </div>
+      </div>
+    </form>
+  </div>
+<% end %>

@@ -1,0 +1,38 @@
+<header>
+  <nav role="navigation" class="navbar is-info">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <%= live_redirect "StoresDaring", to: Routes.page_path(@socket, :index), class: "has-text-light" %>
+      </div>
+    </div>
+    <div class="navbar-start">
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <%= content_tag :a, "Test email", class: "has-text-light", phx_click: :test_email, phx_target: @myself %>
+      </div>
+      <%= if function_exported?(Routes, :live_dashboard_path, 2) and assigns[:user] |> can?(:view, :live_dashboard) do %>
+        <div class="navbar-item">
+          <%= link "LiveDashboard", to: Routes.live_dashboard_path(@socket, :home), class: "has-text-light" %>
+        </div>
+      <% end %>
+      <%= if assigns[:user] do %>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Akun</a>
+          <div class="navbar-dropdown is-right">
+            <div class="navbar-item has-text-grey"><%= @user.email %></div>
+            <%= live_redirect "Profile", to: Routes.page_path(@socket, :profile), class: "navbar-item" %>
+            <%= link "Logout", to: Routes.session_path(@socket, :delete), method: :delete, class: "navbar-item" %>
+          </div>
+        </div>
+      <% else %>
+        <div class="navbar-item">
+          <%= live_redirect "Register", to: Routes.page_path(@socket, :register), class: "link has-text-light" %>
+        </div>
+        <div class="navbar-item">
+          <%= live_redirect "Login", to: Routes.page_path(@socket, :login), class: "link has-text-light" %>
+        </div>
+      <% end %>
+    </div>
+  </nav>
+</header>

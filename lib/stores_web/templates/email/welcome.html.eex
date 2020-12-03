@@ -1,0 +1,2 @@
+hi <%= @to %>!
+welcome html <strong><%= @name %></strong>!

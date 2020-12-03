@@ -3,6 +3,7 @@ defmodule Stores.Accounts.User do
   import Ecto.Changeset
 
   schema "users" do
+    field :name, :string
     field :email, :string
     field :password, :string
 
