@@ -46,7 +46,8 @@ defmodule Stores.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:bcrypt_elixir, "~> 2.2"}
     ]
   end
 
