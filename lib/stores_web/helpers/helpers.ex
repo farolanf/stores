@@ -1,4 +1,6 @@
 defmodule StoresWeb.Helpers do
+  import Phoenix.HTML.Tag
+  import Phoenix.Controller, only: [get_csrf_token: 0]
   import Phoenix.LiveView
   alias Stores.Accounts
 
@@ -10,5 +12,9 @@ defmodule StoresWeb.Helpers do
     else
       _ -> socket
     end
+  end
+
+  def csrf_token_input do
+    tag(:input, type: "hidden", name: "_csrf_token", value: get_csrf_token())
   end
 end

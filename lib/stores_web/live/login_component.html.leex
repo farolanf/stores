@@ -13,13 +13,13 @@
           <div class="field">
             <label class="label">Email</label>
             <div class="control">
-              <%= email_input f, :email, class: "input", placeholder: "Email", autocomplete: "email", value: @login["email"], phx_debounce: 300, phx_hook: "autofocus" %>
+              <%= email_input f, :email, class: "input", placeholder: "Email", autocomplete: "email", value: @login["email"], phx_hook: "autofocus" %>
             </div>
           </div>
           <div class="field">
             <label class="label">Password</label>
             <div class="control">
-              <%= password_input f, :password, class: "input", placeholder: "Password", value: @login["password"], phx_debounce: 300 %>
+              <%= password_input f, :password, class: "input", placeholder: "Password", value: @login["password"] %>
             </div>
           </div>
         </div>
