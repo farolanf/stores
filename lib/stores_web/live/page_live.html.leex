@@ -1,11 +1,24 @@
-<article class="message is-success mt-5">
-  <div class="message-header">
-    Welcome!
+<div class="box">
+  <input class="input" placeholder="Cari barang">
+</div>
+
+<div class="block">
+  <div class="columns">
+    <div class="column">
+      <div class="card">
+        <div class="card-image">
+          <img src="http://lorempixel.com/640/480/city">
+        </div>
+        <div class="card-content">
+          Lorem ipsum dolor sit amet, consec tetur adipiscing elit tetur adipiscing...
+        </div>
+        <div class="card-footer pt-3 px-4 pb-5">
+          <h3 class="title is-4">Rp55.000</h3>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="message-body">
-    Yay! We got a new site setup!
-  </div>
-</article>
+</div>
 
 <%= if @live_action in [:login, :register] do %>
   <%= live_component @socket, StoresWeb.LoginComponent, Map.merge(assigns, %{id: :login}) %>
