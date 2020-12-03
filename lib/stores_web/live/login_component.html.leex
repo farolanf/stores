@@ -1,10 +1,11 @@
 <%= if @live_action == :login do %>
   <div class="modal is-active">
     <%= live_redirect "", to: Routes.page_path(@socket, :index), class: "modal-background" %>
-    <%= f = form_for :login, "/session/new", phx_change: :validate, phx_target: @myself %>
-      <div class="modal-card">
-        <header class="modal-card-head">
+    <%= f = form_for :login, "/session/new", phx_change: :validate, phx_target: @myself, class: "sm:fixed sm:inset-0" %>
+      <div class="modal-card sm:m-0 sm:fixed sm:inset-0 sm:max-h-screen">
+        <header class="modal-card-head sm:rounded-none">
           <p class="modal-card-title">Login</p>
+          <%= live_redirect "", to: Routes.page_path(@socket, :index), class: "delete" %>
         </header>
         <div class="modal-card-body">
           <%= if live_flash(@flash, :error) do %>
@@ -23,7 +24,7 @@
             </div>
           </div>
         </div>
-        <div class="modal-card-foot">
+        <div class="modal-card-foot sm:rounded-none">
           <button class="button is-primary" <%= if !assigns[:valid], do: "disabled" %>>Login</button>
           <%= live_redirect "Register", to: Routes.page_path(@socket, :register), class: "button" %>
         </div>
@@ -35,10 +36,11 @@
 <%= if @live_action == :register do %>
   <div class="modal is-active">
     <%= live_redirect "", to: Routes.page_path(@socket, :index), class: "modal-background" %>
-    <%= f = form_for :register, "#", phx_submit: :register, phx_change: :validate, phx_target: @myself %>
-      <div class="modal-card">
-        <header class="modal-card-head">
+    <%= f = form_for :register, "#", phx_submit: :register, phx_change: :validate, phx_target: @myself, class: "sm:fixed sm:inset-0" %>
+      <div class="modal-card sm:m-0 sm:fixed sm:inset-0 sm:max-h-screen">
+        <header class="modal-card-head sm:rounded-none">
           <p class="modal-card-title">Register</p>
+          <%= live_redirect "", to: Routes.page_path(@socket, :index), class: "delete" %>
         </header>
         <div class="modal-card-body">
           <%= if live_flash(@flash, :error) do %>
@@ -69,7 +71,7 @@
             <% end %>
           </div>
         </div>
-        <div class="modal-card-foot">
+        <div class="modal-card-foot sm:rounded-none">
           <button class="button is-primary" <%= if !assigns[:valid], do: "disabled" %>>Register</button>
           <%= live_redirect "Login", to: Routes.page_path(@socket, :login), class: "button" %>
         </div>
