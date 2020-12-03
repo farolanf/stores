@@ -32,11 +32,12 @@ defmodule StoresWeb.Router do
     live "/login", PageLive, :login
     live "/register", PageLive, :register
     post "/session/new", SessionController, :new
-    delete "/logout", SessionController, :delete
   end
 
   scope "/", StoresWeb do
     pipe_through [:browser, :protected]
+
+    delete "/logout", SessionController, :delete
 
     live "/profile", PageLive, :profile
   end
