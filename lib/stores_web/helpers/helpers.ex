@@ -17,4 +17,15 @@ defmodule StoresWeb.Helpers do
   def csrf_token_input do
     tag(:input, type: "hidden", name: "_csrf_token", value: get_csrf_token())
   end
+
+  def join(list) do
+    str = list
+    |> Enum.map(fn
+      e when is_binary(e) -> e
+      {key, val} -> if val, do: Atom.to_string(key), else: nil
+    end)
+    |> Enum.filter(fn e -> e end)
+    |> Enum.join(" ")
+    if str == "", do: nil, else: str
+  end
 end
