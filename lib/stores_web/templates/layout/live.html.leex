@@ -1,4 +1,3 @@
-<% IO.inspect assigns, label: "============================================ client assigns" %>
 <%= live_component @socket, StoresWeb.TopbarComponent, Map.merge(assigns, %{id: :topbar}) %>
 <main role="main" class="container">
   <%= if live_flash(@flash, :error) do %>

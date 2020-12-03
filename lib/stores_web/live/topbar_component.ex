@@ -10,7 +10,7 @@ defmodule StoresWeb.TopbarComponent do
     else
       socket = socket
       |> put_flash(:error, "Access denied")
-      |> IO.inspect(label: "assigns")
+      |> push_redirect(to: "/")
       {:noreply, socket}
     end
   end
